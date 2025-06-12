@@ -1,0 +1,6 @@
+${PODS_ROOT}/Target Support Files/Pods-ZenModaIOS/Pods-ZenModaIOS-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/NavigationBackport/NavigationBackport.framework
+${BUILT_PRODUCTS_DIR}/Resolver/Resolver.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/SDWebImageSwiftUI/SDWebImageSwiftUI.framework

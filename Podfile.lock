@@ -1,0 +1,34 @@
+PODS:
+  - Alamofire (5.10.2)
+  - NavigationBackport (0.11.3)
+  - Resolver (1.5.1)
+  - SDWebImage (5.21.0):
+    - SDWebImage/Core (= 5.21.0)
+  - SDWebImage/Core (5.21.0)
+  - SDWebImageSwiftUI (3.1.3):
+    - SDWebImage (~> 5.10)
+
+DEPENDENCIES:
+  - Alamofire
+  - NavigationBackport
+  - Resolver
+  - SDWebImageSwiftUI
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - NavigationBackport
+    - Resolver
+    - SDWebImage
+    - SDWebImageSwiftUI
+
+SPEC CHECKSUMS:
+  Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
+  NavigationBackport: 7f4ea9c150ff9887d1477b2e4e2c7cf08712f13d
+  Resolver: 0e2ce51257e9366c54afe1b9e9be25059e9b9300
+  SDWebImage: f84b0feeb08d2d11e6a9b843cb06d75ebf5b8868
+  SDWebImageSwiftUI: a6d7129fb68fc18c8b930b869ddcfce314e49ded
+
+PODFILE CHECKSUM: 8881444af5fcbbf0a601ce468c5f854611d98fe0
+
+COCOAPODS: 1.16.2

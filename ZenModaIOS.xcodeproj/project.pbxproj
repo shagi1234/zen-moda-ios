@@ -6,8 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5BBD964088E16A60858E6CE9 /* Pods_ZenModaIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A20387AFB2A19759B1D141A /* Pods_ZenModaIOS.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		4829A8018DB1BB0668649CCB /* Pods-ZenModaIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZenModaIOS.release.xcconfig"; path = "Target Support Files/Pods-ZenModaIOS/Pods-ZenModaIOS.release.xcconfig"; sourceTree = "<group>"; };
 		71D2B1CF2DF4291000F92175 /* ZenModaIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenModaIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A20387AFB2A19759B1D141A /* Pods_ZenModaIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZenModaIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC96609941278FF4B6C17D0A /* Pods-ZenModaIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZenModaIOS.debug.xcconfig"; path = "Target Support Files/Pods-ZenModaIOS/Pods-ZenModaIOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -23,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BBD964088E16A60858E6CE9 /* Pods_ZenModaIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -34,6 +42,8 @@
 			children = (
 				71D2B1D12DF4291000F92175 /* ZenModaIOS */,
 				71D2B1D02DF4291000F92175 /* Products */,
+				D2C94E6F4B301BB7506F5F2F /* Pods */,
+				F347A012AC0C6671DB409F21 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -45,6 +55,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D2C94E6F4B301BB7506F5F2F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FC96609941278FF4B6C17D0A /* Pods-ZenModaIOS.debug.xcconfig */,
+				4829A8018DB1BB0668649CCB /* Pods-ZenModaIOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F347A012AC0C6671DB409F21 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A20387AFB2A19759B1D141A /* Pods_ZenModaIOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -52,9 +79,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 71D2B1DA2DF4291200F92175 /* Build configuration list for PBXNativeTarget "ZenModaIOS" */;
 			buildPhases = (
+				8EC8B3501E8F7BF36549918F /* [CP] Check Pods Manifest.lock */,
 				71D2B1CB2DF4291000F92175 /* Sources */,
 				71D2B1CC2DF4291000F92175 /* Frameworks */,
 				71D2B1CD2DF4291000F92175 /* Resources */,
+				4A8CFF3C10785238A8DCFE85 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -64,8 +93,6 @@
 				71D2B1D12DF4291000F92175 /* ZenModaIOS */,
 			);
 			name = ZenModaIOS;
-			packageProductDependencies = (
-			);
 			productName = ZenModaIOS;
 			productReference = 71D2B1CF2DF4291000F92175 /* ZenModaIOS.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +140,52 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4A8CFF3C10785238A8DCFE85 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZenModaIOS/Pods-ZenModaIOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZenModaIOS/Pods-ZenModaIOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZenModaIOS/Pods-ZenModaIOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8EC8B3501E8F7BF36549918F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZenModaIOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		71D2B1CB2DF4291000F92175 /* Sources */ = {
@@ -248,6 +321,7 @@
 		};
 		71D2B1DB2DF4291200F92175 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC96609941278FF4B6C17D0A /* Pods-ZenModaIOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -276,6 +350,7 @@
 		};
 		71D2B1DC2DF4291200F92175 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4829A8018DB1BB0668649CCB /* Pods-ZenModaIOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

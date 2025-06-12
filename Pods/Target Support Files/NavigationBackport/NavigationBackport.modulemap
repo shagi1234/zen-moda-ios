@@ -1,0 +1,6 @@
+framework module NavigationBackport {
+  umbrella header "NavigationBackport-umbrella.h"
+
+  export *
+  module * { export * }
+}
