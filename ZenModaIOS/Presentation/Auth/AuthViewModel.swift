@@ -1,0 +1,213 @@
+import SwiftUI
+import Combine
+
+class AuthViewModel: ObservableObject {
+    @Published var phoneNumber = ""
+    
+    @Published var otpField = "" {
+        didSet {
+            guard otpField.count <= 5,
+                  otpField.last?.isNumber ?? true else {
+                otpField = oldValue
+                return
+            }
+        }
+    }
+    
+    @Published var fullName = ""
+    @Published var selectedGender = 0
+    
+    @Published var isLoading = false
+    @Published var errorMessage: String?
+    @Published var showError = false
+    
+    @Published var isPhoneValid = false
+    @Published var isOTPValid = false
+    @Published var isNameValid = false
+    @Published var acceptedTerms = false
+    
+    @Published var currentStep: AuthStep = .signUp
+    @Published var otpTimer = 47
+    @Published var canResendOTP = false
+    
+    private var cancellables = Set<AnyCancellable>()
+    private var otpTimerCancellable: AnyCancellable?
+    private let authRepository: AuthRepository
+    
+    init(authRepository: AuthRepository = AuthRepositoryImpl()) {
+        self.authRepository = authRepository
+        setupValidation()
+    }
+    
+    var otp1: String {
+        guard otpField.count >= 1 else { return "" }
+        return String(Array(otpField)[0])
+    }
+    var otp2: String {
+        guard otpField.count >= 2 else { return "" }
+        return String(Array(otpField)[1])
+    }
+    var otp3: String {
+        guard otpField.count >= 3 else { return "" }
+        return String(Array(otpField)[2])
+    }
+    var otp4: String {
+        guard otpField.count >= 4 else { return "" }
+        return String(Array(otpField)[3])
+    }
+    var otp5: String {
+        guard otpField.count >= 5 else { return "" }
+        return String(Array(otpField)[4])
+    }
+    
+    @Published var borderColor: Color = .borderLight
+    @Published var isTextFieldDisabled = false
+    var successCompletionHandler: (() -> ())?
+    
+    @Published var showResendText = false
+    
+    private func setupValidation() {
+        $phoneNumber
+            .map { phone in
+                self.isValidPhoneNumber(phone)
+            }
+            .assign(to: \.isPhoneValid, on: self)
+            .store(in: &cancellables)
+        
+        $otpField
+            .map { otp in
+                otp.count == 5 && otp.allSatisfy { $0.isNumber }
+            }
+            .assign(to: \.isOTPValid, on: self)
+            .store(in: &cancellables)
+        
+        $fullName
+            .map { name in
+                name.trimmingCharacters(in: .whitespaces).count >= 2
+            }
+            .assign(to: \.isNameValid, on: self)
+            .store(in: &cancellables)
+    }
+    
+    private func isValidPhoneNumber(_ phone: String) -> Bool {
+        // Just check if it's 8 digits for Turkmenistan format
+        // Since +993 is displayed separately, we only validate the number part
+        return phone.count == 8 && phone.allSatisfy { $0.isNumber }
+    }
+    
+    func sendOTP() {
+        guard isPhoneValid else { return }
+        
+        isLoading = true
+        errorMessage = nil
+        
+        let fullPhoneNumber = "+993" + phoneNumber
+        let request = RequestLogin(phoneNumber: fullPhoneNumber)
+        
+        authRepository.login(request: request)
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { [weak self] completion in
+                    self?.isLoading = false
+                    
+                    if case .failure(let error) = completion {
+                        self?.handleError(error)
+                    }
+                },
+                receiveValue: { [weak self] response in
+                    self?.currentStep = .verification
+                    self?.startOTPTimer()
+                }
+            )
+            .store(in: &cancellables)
+    }
+    
+    func verifyOTP() {
+        guard isOTPValid else { return }
+        
+        isLoading = true
+        errorMessage = nil
+        
+        let fullPhoneNumber = "+993" + phoneNumber
+        
+        let request = RequestConfirmOtp(
+            phoneNumber: fullPhoneNumber,
+            otp: otpField,
+            id: Defaults.sendSmsId
+        )
+        
+        authRepository.confirm(request: request)
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { [weak self] completion in
+                    self?.isLoading = false
+                    
+                    if case .failure(let error) = completion {
+                        self?.handleError(error)
+                    }
+                },
+                receiveValue: { [weak self] response in
+                    self?.currentStep = .nameEntry
+                }
+            )
+            .store(in: &cancellables)
+    }
+    
+    func completeRegistration() {
+        guard isNameValid else { return }
+        
+        isLoading = true
+        errorMessage = nil
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.isLoading = false
+            self.currentStep = .completed
+        }
+    }
+    
+    func resendOTP() {
+        guard canResendOTP else { return }
+        sendOTP()
+    }
+    
+    private func startOTPTimer() {
+        otpTimer = 47
+        canResendOTP = false
+        
+        otpTimerCancellable = Timer.publish(every: 1, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                
+                if self.otpTimer > 0 {
+                    self.otpTimer -= 1
+                } else {
+                    self.canResendOTP = true
+                    self.otpTimerCancellable?.cancel()
+                }
+            }
+    }
+    
+    private func handleError(_ error: NetworkError) {
+        errorMessage = error.userFriendlyMessage
+        showError = true
+    }
+    
+    func goBack() {
+        switch currentStep {
+        case .verification:
+            currentStep = .signUp
+        case .nameEntry:
+            currentStep = .verification
+        default:
+            break
+        }
+    }
+}
+
+enum AuthStep {
+    case signUp
+    case verification
+    case nameEntry
+    case completed
+}

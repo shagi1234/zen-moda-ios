@@ -1,0 +1,29 @@
+/* 
+  Localizable.strings
+  ZenModaIOS
+
+  Created by Shahruh on 16.06.2025.
+  
+*/
+
+"app_name" = "Meniň Programmam";
+"welcome" = "Hoş geldiňiz";
+"enter_phone_verification_message" = "Hasabyňyzy tassyklamak üçin telefon belgiňizi giriziň";
+"phone" = "Telefon";
+"phone_placeholder" = "Telefon belgiňizi giriziň";
+"default_country_code" = "+993";
+"verify" = "Tassykla";
+"terms_agreement_full" = "Men Ulanyş kadalaryny we Gizlinlik syýasatyny kabul edýärin";
+"verification_code" = "Tassyklama kody";
+"enter_sms_code_message" = "Telefonyňyza iberilen tassyklama kodyny giriziň";
+"continue" = "Dowam et";
+"resend_code" = "Kody täzeden iber";
+"resend_code_timer" = "%d sekuntdan soň kody täzeden ibermek";
+"error" = "Ýalňyşlyk";
+"enter_your_name" = "Adyňyzy giriziň";
+"enter_name_choose_gender" = "Adyňyzy giriziň we jynsyňyzy saýlaň";
+"name" = "Ady";
+"name_placeholder" = "Doly adyňyzy giriziň";
+"gender" = "Jynsy";
+"male" = "Erkek";
+"female" = "Aýal";

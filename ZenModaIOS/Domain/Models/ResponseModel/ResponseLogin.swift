@@ -5,6 +5,6 @@
 //  Created by Shahruh on 13.06.2025.
 //
 
-struct LoginDetails: Codable,RequestParameters {
-    let phoneNumber: String
+struct ResponseLogin: Codable {
+    let smsSendId: String
 }

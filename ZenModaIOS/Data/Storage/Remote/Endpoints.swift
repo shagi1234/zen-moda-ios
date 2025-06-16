@@ -9,7 +9,8 @@ import Foundation
 import Alamofire
 
 enum Endpoints {
-    case login(_ loginDetails: LoginDetails)
+    case login(_ request: RequestLogin)
+    case confirmOtp(_ request: RequestConfirmOtp)
     
 }
 
@@ -18,12 +19,16 @@ extension Endpoints: EndpointProtocol {
         switch self {
         case .login:
             return CONSTANTS.BASE_URL + "/login"
+            
+        case .confirmOtp:
+            return CONSTANTS.BASE_URL + "/confirm"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .login:
+        case .login,
+                .confirmOtp:
             return .post
         default:
             return .get
@@ -33,6 +38,8 @@ extension Endpoints: EndpointProtocol {
     var parameters: Parameters? {
         switch self {
         case .login(let params):
+            return params.asParameters()
+        case .confirmOtp(let params):
             return params.asParameters()
             
         default:

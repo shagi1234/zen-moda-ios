@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  ZenModaIOS
+
+  Created by Shahruh on 16.06.2025.
+  
+*/
+"app_name" = "MyApp";
+"welcome" = "Welcome";
+"enter_phone_verification_message" = "Please enter your phone number to verify your account";
+"phone" = "Phone";
+"phone_placeholder" = "Enter your phone number";
+"default_country_code" = "+1";
+"verify" = "Verify";
+"terms_agreement_full" = "I agree to the Terms of Service and Privacy Policy";
+"verification_code" = "Verification Code";
+"enter_sms_code_message" = "Please enter the verification code sent to your phone";
+"continue" = "Continue";
+"resend_code" = "Resend Code";
+"resend_code_timer" = "Resend code in %d seconds";
+"error" = "Error";
+"enter_your_name" = "Enter Your Name";
+"enter_name_choose_gender" = "Please enter your name and choose your gender";
+"name" = "Name";
+"name_placeholder" = "Enter your full name";
+"gender" = "Gender";
+"male" = "Male";
+"female" = "Female";

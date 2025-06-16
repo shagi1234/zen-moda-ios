@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 
+// MARK: - Updated Network Class
 class Network {
     
     private static let sessionManager: Session = {
@@ -17,8 +18,10 @@ class Network {
         return Session(configuration: configuration)
     }()
     
-    class func perform<T: Decodable>(endpoint: EndpointProtocol, completionHandler: @escaping (Result<T, AFError>) -> Void) {
-        
+    class func perform<T: Decodable>(
+        endpoint: EndpointProtocol,
+        completionHandler: @escaping (Result<T, NetworkError>) -> Void
+    ) {
         let networkLogger = NetworkLogger()
         
         let request = sessionManager.request(
@@ -36,11 +39,17 @@ class Network {
             .validate()
             .logResponse()
             .responseDecodable(of: T.self) { response in
-                completionHandler(response.result)
+                let result = response.result.mapError { afError -> NetworkError in
+                    return convertAFErrorToNetworkError(afError)
+                }
+                completionHandler(result)
             }
     }
     
-    class func performString(endpoint: EndpointProtocol, completion: @escaping (Result<String, AFError>) -> Void) {
+    class func performString(
+        endpoint: EndpointProtocol,
+        completion: @escaping (Result<String, NetworkError>) -> Void
+    ) {
         let request = sessionManager.request(
             endpoint.path,
             method: endpoint.method,
@@ -50,54 +59,77 @@ class Network {
         )
         
         request.responseString { response in
-            completion(response.result)
+            let result = response.result.mapError { afError -> NetworkError in
+                return convertAFErrorToNetworkError(afError)
+            }
+            completion(result)
         }
     }
     
-    class func performFormData<T: Decodable>(endpoint: EndpointProtocol, completionHandler: @escaping (Result<T, AFError>) -> Void) {
+    class func performFormData<T: Decodable>(
+        endpoint: EndpointProtocol,
+        completionHandler: @escaping (Result<T, NetworkError>) -> Void
+    ) {
         let request = sessionManager.request(
             endpoint.path,
             method: endpoint.method,
             parameters: endpoint.parameters,
-            encoding: URLEncoding.default,  // Always use URLEncoding for form data
+            encoding: URLEncoding.default,
             headers: endpoint.header
         )
         
         request
             .validate()
             .responseDecodable(of: T.self) { response in
-                completionHandler(response.result)
+                let result = response.result.mapError { afError -> NetworkError in
+                    return convertAFErrorToNetworkError(afError)
+                }
+                completionHandler(result)
             }
     }
     
-    class func performWithCustomPath<T: Decodable>(
-        endpoint: EndpointProtocol,
-        additionalPath: String,
-        completionHandler: @escaping (Result<T, AFError>) -> Void
-    ) {
-        let networkLogger = NetworkLogger()
-        
-        let request = sessionManager.request(
-            endpoint.path + additionalPath,
-            method: endpoint.method,
-            parameters: endpoint.parameters,
-            encoding: endpoint.method == .get ? URLEncoding.default : JSONEncoding.default,
-            headers: endpoint.header,
-            interceptor: networkLogger
-        )
-        
-        request
-            .validate()
-            .logResponse()
-            .responseDecodable(of: T.self) { response in
-                completionHandler(response.result)
+    private class func convertAFErrorToNetworkError(_ afError: AFError) -> NetworkError {
+        switch afError {
+        case .invalidURL:
+            return .invalidURL
+        case .sessionTaskFailed(let error):
+            if let urlError = error as? URLError {
+                switch urlError.code {
+                case .timedOut:
+                    return .timeout
+                case .notConnectedToInternet, .networkConnectionLost:
+                    return .networkFailure("No internet connection")
+                default:
+                    return .networkFailure(urlError.localizedDescription)
+                }
             }
-    }
-    
-    func doStuff<T: Encodable>(payload: [String: T]) {
-        
+            return .networkFailure(error.localizedDescription)
+        case .responseValidationFailed(let reason):
+            switch reason {
+            case .unacceptableStatusCode(let code):
+                switch code {
+                case 401:
+                    return .unauthorized
+                case 403:
+                    return .forbidden
+                case 404:
+                    return .notFound
+                case 500...599:
+                    return .serverError(code)
+                default:
+                    return .serverError(code)
+                }
+            default:
+                return .networkFailure(afError.localizedDescription)
+            }
+        case .responseSerializationFailed:
+            return .decodingError
+        default:
+            return .networkFailure(afError.localizedDescription)
+        }
     }
 }
+
 
 extension Encodable {
     func asDictionary() -> [String: Any]? {

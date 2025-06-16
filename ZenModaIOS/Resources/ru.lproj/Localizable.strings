@@ -1,0 +1,29 @@
+/* 
+  Localizable.strings
+  ZenModaIOS
+
+  Created by Shahruh on 16.06.2025.
+  
+*/
+
+"app_name" = "Мое Приложение";
+"welcome" = "Добро пожаловать";
+"enter_phone_verification_message" = "Пожалуйста, введите номер телефона для подтверждения аккаунта";
+"phone" = "Телефон";
+"phone_placeholder" = "Введите номер телефона";
+"default_country_code" = "+7";
+"verify" = "Подтвердить";
+"terms_agreement_full" = "Я согласен с Условиями использования и Политикой конфиденциальности";
+"verification_code" = "Код подтверждения";
+"enter_sms_code_message" = "Пожалуйста, введите код подтверждения, отправленный на ваш телефон";
+"continue" = "Продолжить";
+"resend_code" = "Отправить код повторно";
+"resend_code_timer" = "Отправить код повторно через %d секунд";
+"error" = "Ошибка";
+"enter_your_name" = "Введите ваше имя";
+"enter_name_choose_gender" = "Пожалуйста, введите ваше имя и выберите пол";
+"name" = "Имя";
+"name_placeholder" = "Введите полное имя";
+"gender" = "Пол";
+"male" = "Мужской";
+"female" = "Женский";

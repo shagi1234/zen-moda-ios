@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct ZenModaIOSApp: App {
+    @StateObject var localMan = LocalizationManager()
+    @StateObject var coordinator = Coordinator()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(localMan)
+                .environmentObject(coordinator)
         }
     }
 }
