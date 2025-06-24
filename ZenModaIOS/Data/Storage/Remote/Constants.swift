@@ -2,5 +2,5 @@
 
 
 struct CONSTANTS {
-    static let BASE_URL = "https://zen-moda"
-} 
+    static let BASE_URL = "https://zen-moda.com"
+}

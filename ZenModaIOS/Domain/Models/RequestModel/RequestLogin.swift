@@ -6,5 +6,5 @@
 //
 
 struct RequestLogin:Codable,RequestParameters {
-    let phoneNumber: String
+    let phone: String
 }

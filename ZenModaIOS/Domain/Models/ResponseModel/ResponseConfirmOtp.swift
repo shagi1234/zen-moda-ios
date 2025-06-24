@@ -6,6 +6,14 @@
 //
 
 struct ResponseConfirmOtp: Codable {
-    let accessToken: String
-    let isUserAlreadyExist: Bool
+    let access_token: String
+    let refresh_token: String
+    let user: UserData?
+}
+
+struct UserData: Codable {
+    let id: String
+    let phone_number: String
+    let fullname: String?
+    let gender:String?
 }

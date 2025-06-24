@@ -12,7 +12,7 @@ struct NameEntryView: View {
     
     var body: some View {
         VStack(spacing: 32) {
-
+            
             HStack {
                 Button(action: {
                     viewModel.goBack()
@@ -24,97 +24,98 @@ struct NameEntryView: View {
                 Spacer()
             }
             
-            VStack(spacing: 24) {
+            ScrollView{
                 
-                Image(.people)
-                    .background(
-                        Circle()
-                            .fill(Color.bgBase)
-                            .frame(width: 56, height: 56)
-                    )
-                    .foregroundColor(Color.accentColor)
-                
-                VStack(spacing: 8) {
-                    Text("enter_your_name".localized)
-                        .font(.system(size: 24, weight: .semibold))
-                        .foregroundColor(.black)
+                VStack(spacing: 24) {
                     
-                    Text("enter_name_choose_gender".localized)
-                        .font(.system(size: 16))
-                        .foregroundColor(.gray)
-                        .multilineTextAlignment(.center)
-                }
-            }
-            
-            VStack(alignment: .leading, spacing: 24) {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("name".localized)
-                        .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(.black)
-                    
-                    TextField("name_placeholder".localizedString(), text: $viewModel.fullName)
-                        .font(.system(size: 16))
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 12)
+                    Image(.people)
                         .background(
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(Color.backgroundApp)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .stroke(
-                                            Color.borderLight,
-                                            lineWidth: 1
-                                        )
-                                )
+                            Circle()
+                                .fill(Color.bgBase)
+                                .frame(width: 56, height: 56)
                         )
-                        .cornerRadius(8)
-                }
-                
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("gender".localized)
-                        .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(.black)
+                        .foregroundColor(Color.accentColor)
                     
                     VStack(spacing: 8) {
-                        GenderOptionView(
-                            title: "male".localizedString(),
-                            isSelected: viewModel.selectedGender == 0
-                        ) {
-                            viewModel.selectedGender = 0
-                        }
+                        Text("enter_your_name".localized)
+                            .font(.system(size: 24, weight: .semibold))
+                            .foregroundColor(.black)
                         
-                        GenderOptionView(
-                            title: "female".localizedString(),
-                            isSelected: viewModel.selectedGender == 1
-                        ) {
-                            viewModel.selectedGender = 1
+                        Text("enter_name_choose_gender".localized)
+                            .font(.system(size: 16))
+                            .foregroundColor(.gray)
+                            .multilineTextAlignment(.center)
+                    }
+                }
+                .padding(.bottom)
+                
+                VStack(alignment: .leading, spacing: 24) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("name".localized)
+                            .font(.system(size: 16, weight: .medium))
+                            .foregroundColor(.black)
+                        
+                        TextField("name_placeholder".localizedString(), text: $viewModel.fullName)
+                            .font(.system(size: 16))
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 12)
+                            .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color.backgroundApp)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .stroke(
+                                                Color.borderLight,
+                                                lineWidth: 1
+                                            )
+                                    )
+                            )
+                            .cornerRadius(8)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("gender".localized)
+                            .font(.system(size: 16, weight: .medium))
+                            .foregroundColor(.black)
+                        
+                        VStack(spacing: 8) {
+                            GenderOptionView(
+                                title: "male".localizedString(),
+                                isSelected: viewModel.selectedGender == 0
+                            ) {
+                                viewModel.selectedGender = 0
+                            }
+                            
+                            GenderOptionView(
+                                title: "female".localizedString(),
+                                isSelected: viewModel.selectedGender == 1
+                            ) {
+                                viewModel.selectedGender = 1
+                            }
                         }
                     }
-                }
-            }
-            
-            // Continue Button
-            Button(action: {
-                viewModel.completeRegistration()
-            }) {
-                HStack {
-                    if viewModel.isLoading {
-                        ProgressView()
-                            .scaleEffect(0.8)
-                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                }.padding(.bottom)
+                
+                Button(action: {
+                    viewModel.completeRegistration()
+                }) {
+                    HStack {
+                        if viewModel.isLoading {
+                            ProgressView()
+                                .scaleEffect(0.8)
+                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        }
+                        Text("continue".localized)
+                            .font(.system(size: 16, weight: .semibold))
                     }
-                    Text("continue".localized)
-                        .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 48)
+                    .background(viewModel.isNameValid ? Color.accentColor : Color.gray.opacity(0.3))
+                    .cornerRadius(8)
                 }
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
-                .frame(height: 48)
-                .background(viewModel.isNameValid ? Color.accentColor : Color.gray.opacity(0.3))
-                .cornerRadius(8)
+                .disabled(!viewModel.isNameValid || viewModel.isLoading)
             }
-            .disabled(!viewModel.isNameValid || viewModel.isLoading)
-            
-            Spacer()
         }
         .padding(.horizontal, 24)
         .padding(.top, 20)

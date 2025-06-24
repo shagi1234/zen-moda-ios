@@ -6,7 +6,6 @@
 //
 
 struct RequestConfirmOtp: Codable,RequestParameters {
-    var phoneNumber: String
-    var otp: String
-    var id: String
+    var phone_number: String
+    var code: String
 }

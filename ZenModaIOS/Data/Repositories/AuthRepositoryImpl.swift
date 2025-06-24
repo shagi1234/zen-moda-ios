@@ -8,6 +8,19 @@
 import Combine
 
 class AuthRepositoryImpl: AuthRepository {
+    func updateProfile(request: RequestUpdateProfile) -> AnyPublisher<ResponseUpdateProfile, NetworkError> {
+        return Future { promise in
+            Network.perform(endpoint: Endpoints.updateProfile(request)) { (result: Result<ResponseUpdateProfile, NetworkError>) in
+                switch result {
+                case .success(let response):
+                    promise(.success(response))
+                case .failure(let error):
+                    promise(.failure(error))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
     
     func login(request: RequestLogin) -> AnyPublisher<ResponseLogin, NetworkError> {
         return Future { promise in

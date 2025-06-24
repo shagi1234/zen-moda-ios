@@ -90,8 +90,6 @@ class AuthViewModel: ObservableObject {
     }
     
     private func isValidPhoneNumber(_ phone: String) -> Bool {
-        // Just check if it's 8 digits for Turkmenistan format
-        // Since +993 is displayed separately, we only validate the number part
         return phone.count == 8 && phone.allSatisfy { $0.isNumber }
     }
     
@@ -101,8 +99,7 @@ class AuthViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil
         
-        let fullPhoneNumber = "+993" + phoneNumber
-        let request = RequestLogin(phoneNumber: fullPhoneNumber)
+        let request = RequestLogin(phone: phoneNumber)
         
         authRepository.login(request: request)
             .receive(on: DispatchQueue.main)
@@ -128,12 +125,9 @@ class AuthViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil
         
-        let fullPhoneNumber = "+993" + phoneNumber
-        
         let request = RequestConfirmOtp(
-            phoneNumber: fullPhoneNumber,
-            otp: otpField,
-            id: Defaults.sendSmsId
+            phone_number: phoneNumber,
+            code: otpField
         )
         
         authRepository.confirm(request: request)
@@ -147,7 +141,17 @@ class AuthViewModel: ObservableObject {
                     }
                 },
                 receiveValue: { [weak self] response in
-                    self?.currentStep = .nameEntry
+                    
+                    if response.user == nil {
+                        self?.currentStep = .nameEntry
+                    } else {
+                        self?.currentStep = .completed
+                        Defaults.username = response.user?.fullname ?? ""
+                        Defaults.gender = response.user?.gender ?? ""
+                        Defaults.userId = response.user?.id ?? ""
+                    }
+                    
+//                    Defaults.token = response.access_token
                 }
             )
             .store(in: &cancellables)
@@ -159,10 +163,32 @@ class AuthViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.isLoading = false
-            self.currentStep = .completed
-        }
+        let request = RequestUpdateProfile(
+            fullname: fullName,
+            gender: selectedGender == 0 ? "MALE" : "FEMALE"
+        )
+        
+        authRepository.updateProfile(request: request)
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { [weak self] completion in
+                    self?.isLoading = false
+                    
+                    if case .failure(let error) = completion {
+                        self?.handleError(error)
+                    }
+                },
+                receiveValue: { [weak self] response in
+                    self?.isLoading = false
+                    
+                    Defaults.username = response.user.fullname ?? ""
+                    Defaults.userId = response.user.id
+                    Defaults.gender = response.user.gender ?? ""
+                    
+                    self?.currentStep = .completed
+                }
+            )
+            .store(in: &cancellables)
     }
     
     func resendOTP() {

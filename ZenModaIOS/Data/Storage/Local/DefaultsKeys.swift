@@ -19,7 +19,8 @@ enum DefaultsKeys: String, CaseIterable {
     case phoneNumber
     case username
     case language
-    case sendSmsId
+    case userId
+    case gender
     
     
 }
@@ -46,9 +47,14 @@ class Defaults {
         set { UserDefaults.standard.setValue(newValue, forKey: DefaultsKeys.username.rawValue) }
     }
     
-    static var sendSmsId: String {
-        get { UserDefaults.standard.string(forKey: DefaultsKeys.sendSmsId.rawValue) ?? "" }
-        set { UserDefaults.standard.setValue(newValue, forKey: DefaultsKeys.sendSmsId.rawValue) }
+    static var gender: String {
+        get { UserDefaults.standard.string(forKey: DefaultsKeys.gender.rawValue) ?? "" }
+        set { UserDefaults.standard.setValue(newValue, forKey: DefaultsKeys.gender.rawValue) }
+    }
+    
+    static var userId: String {
+        get { UserDefaults.standard.string(forKey: DefaultsKeys.userId.rawValue) ?? "" }
+        set { UserDefaults.standard.setValue(newValue, forKey: DefaultsKeys.userId.rawValue) }
     }
   
     static func getCodable<T: Codable>(_ key: String) -> T? {

@@ -5,7 +5,6 @@
   Created by Shahruh on 16.06.2025.
   
 */
-
 "app_name" = "Meniň Programmam";
 "welcome" = "Hoş geldiňiz";
 "enter_phone_verification_message" = "Hasabyňyzy tassyklamak üçin telefon belgiňizi giriziň";
@@ -27,3 +26,23 @@
 "gender" = "Jynsy";
 "male" = "Erkek";
 "female" = "Aýal";
+"something_went_wrong" = "Näsazlyk ýüze çykdy";
+"specifications" = "Aýratynlyklar";
+"price_evaluation" = "Bahanyň bahalandyrylmagy";
+"addresses" = "Salgylar";
+"language" = "Dil";
+"turkmen" = "Türkmen";
+"help" = "Kömek";
+"frequently_asked_questions" = "Köp berilýän soraglar";
+"how_to_place_order" = "Sargyt nädip bermeli";
+"how_to_find_product" = "Önümi nädip tapmaly";
+"delivery_service" = "Eltip berme hyzmaty";
+"zen_fashion_sat" = "Zen Fashion Dükany";
+"information" = "Maglumat";
+"privacy_policy" = "Gizlinlik syýasaty";
+"information_security" = "Maglumat howpsuzlygy";
+"why_zen_fashion" = "Näme üçin Zen Fashion";
+"contact_us" = "Biziň bilen habarlaşyň";
+"about_us" = "Biz barada";
+"open_shop" = "Dükan açmak";
+"about_program" = "Programma barada";

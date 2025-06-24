@@ -10,4 +10,5 @@ import Combine
 protocol AuthRepository {
     func login(request: RequestLogin) -> AnyPublisher<ResponseLogin, NetworkError>
     func confirm(request: RequestConfirmOtp) -> AnyPublisher<ResponseConfirmOtp, NetworkError>
+    func updateProfile(request: RequestUpdateProfile) -> AnyPublisher<ResponseUpdateProfile, NetworkError>
 }

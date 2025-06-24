@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var coordinator: Coordinator
+    @AppStorage("token") var token = ""
     
     var body: some View {
-        SignUpView()
+        if token.isEmpty && Defaults.userId.isEmpty  {
+            SignUpView()
+        } else {
+            MainTabbarView()
+                .environmentObject(coordinator)
+        }
+        
     }
 }
 

@@ -33,8 +33,6 @@ class Network {
             interceptor: networkLogger
         )
         
-        print("[Requesting URL]: \(endpoint.path)")
-        
         request
             .validate()
             .logResponse()
@@ -64,6 +62,33 @@ class Network {
             }
             completion(result)
         }
+    }
+    
+    class func performWithCustomPath<T:Decodable> (endpoint: EndpointProtocol,
+                                                   additionalPath: String,
+                                                   completionHandler: @escaping (Result<T, NetworkError>) -> Void
+    ) {
+        let networkLogger = NetworkLogger()
+        
+        let request = sessionManager.request(
+            endpoint.path + additionalPath,
+            method: endpoint.method,
+            parameters: endpoint.parameters,
+            encoding: endpoint.encoding,
+            headers: endpoint.header,
+            interceptor: networkLogger
+        )
+        
+        request
+            .validate()
+            .logResponse()
+            .responseDecodable(of: T.self) { response in
+                let result = response.result.mapError { afError -> NetworkError in
+                    return convertAFErrorToNetworkError(afError)
+                }
+                completionHandler(result)
+            }
+       
     }
     
     class func performFormData<T: Decodable>(

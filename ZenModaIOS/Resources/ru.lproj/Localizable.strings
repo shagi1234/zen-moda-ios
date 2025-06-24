@@ -5,7 +5,6 @@
   Created by Shahruh on 16.06.2025.
   
 */
-
 "app_name" = "Мое Приложение";
 "welcome" = "Добро пожаловать";
 "enter_phone_verification_message" = "Пожалуйста, введите номер телефона для подтверждения аккаунта";
@@ -27,3 +26,24 @@
 "gender" = "Пол";
 "male" = "Мужской";
 "female" = "Женский";
+
+"something_went_wrong" = "Что-то пошло не так";
+"specifications" = "Характеристики";
+"price_evaluation" = "Оценка цены";
+"addresses" = "Адреса";
+"language" = "Язык";
+"turkmen" = "Туркменский";
+"help" = "Помощь";
+"frequently_asked_questions" = "Часто задаваемые вопросы";
+"how_to_place_order" = "Как сделать заказ";
+"how_to_find_product" = "Как найти товар";
+"delivery_service" = "Служба доставки";
+"zen_fashion_sat" = "Магазин Zen Fashion";
+"information" = "Информация";
+"privacy_policy" = "Политика конфиденциальности";
+"information_security" = "Информационная безопасность";
+"why_zen_fashion" = "Почему Zen Fashion";
+"contact_us" = "Связаться с нами";
+"about_us" = "О нас";
+"open_shop" = "Открыть магазин";
+"about_program" = "О программе";

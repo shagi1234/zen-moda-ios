@@ -6,5 +6,6 @@
 //
 
 struct ResponseLogin: Codable {
-    let smsSendId: String
+    let message: String
+    let success: Bool
 }

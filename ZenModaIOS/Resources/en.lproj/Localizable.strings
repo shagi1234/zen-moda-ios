@@ -26,3 +26,24 @@
 "gender" = "Gender";
 "male" = "Male";
 "female" = "Female";
+
+"something_went_wrong" = "Something went wrong";
+"specifications" = "Specifications";
+"price_evaluation" = "Price Evaluation";
+"addresses" = "Addresses";
+"language" = "Language";
+"turkmen" = "Turkmen";
+"help" = "Help";
+"frequently_asked_questions" = "Frequently Asked Questions";
+"how_to_place_order" = "How to Place an Order";
+"how_to_find_product" = "How to Find a Product";
+"delivery_service" = "Delivery Service";
+"zen_fashion_sat" = "Zen Fashion Store";
+"information" = "Information";
+"privacy_policy" = "Privacy Policy";
+"information_security" = "Information Security";
+"why_zen_fashion" = "Why Zen Fashion";
+"contact_us" = "Contact Us";
+"about_us" = "About Us";
+"open_shop" = "Open Shop";
+"about_program" = "About Program";
