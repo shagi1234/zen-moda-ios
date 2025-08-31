@@ -2,13 +2,13 @@
 //  ProfileViewModel.swift
 //  ZenModaIOS
 //
-//  Created by Shahruh on 25.06.2025.
+//  Created by Shahruh on 10.07.2025.
 //
 
 import SwiftUI
 import Combine
 
-class ProfileViewModel: ObservableObject {
+class ProfileViewModel: ObservableObject{
     @Published var userData: UserData?
     @Published var isLoading = false
     @Published var errorMessage: String?

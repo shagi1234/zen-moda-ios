@@ -17,6 +17,7 @@ struct ZenModaIOSApp: App {
             ContentView()
                 .environmentObject(localMan)
                 .environmentObject(coordinator)
+                .preferredColorScheme(.light) 
         }
     }
 }

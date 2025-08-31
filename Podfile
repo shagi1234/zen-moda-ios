@@ -10,5 +10,5 @@ target 'ZenModaIOS' do
   pod 'NavigationBackport'
   pod 'Alamofire'
   pod 'Resolver'
-  pod 'SDWebImageSwiftUI'
+  pod 'Kingfisher', '~> 7.0'
 end

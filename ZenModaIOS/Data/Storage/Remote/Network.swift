@@ -78,7 +78,6 @@ class Network {
             headers: endpoint.header,
             interceptor: networkLogger
         )
-        
         request
             .validate()
             .logResponse()

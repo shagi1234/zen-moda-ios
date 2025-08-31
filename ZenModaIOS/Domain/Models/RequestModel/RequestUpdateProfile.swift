@@ -7,5 +7,6 @@
 
 struct RequestUpdateProfile: Codable, RequestParameters {
     let fullname: String
+    let phone_number: String
     let gender: String
 }

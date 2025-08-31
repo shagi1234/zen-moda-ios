@@ -47,3 +47,109 @@
 "about_us" = "About Us";
 "open_shop" = "Open Shop";
 "about_program" = "About Program";
+
+"key_search_zen_moda" = "Search from Zen moda";
+"key_super_discounts" = "SUPER DISCOUNTS!";
+"key_spring_sale" = "SPRING SALE";
+"key_discounts_up_to" = "Discounts up to";
+"key_view_all" = "View All";
+"key_sale" = "SALE";
+"key_discount" = "DISCOUNT";
+"key_below_300_tmt" = "300 TMT below items";
+"key_clean_weekdays_ozon" = "Clean weekdays on Ozon!";
+"key_savings_household_chemistry" = "Savings on household chemistry";
+"key_brands" = "Brands";
+"key_for_you" = "For you";
+"key_see_all" = "See All";
+"key_sale_spring_2021" = "SALE / SPRING 2021";
+
+
+"not_logged_in" = "Not logged in";
+"profile_information" = "Profile information";
+"ok" = "OK";
+"unknown_error" = "Unknown error";
+"password" = "Password";
+"log_out" = "Log out";
+"delete_account" = "Delete account";
+
+"cart_title" = "Cart";
+"items_count" = "items";
+"select_all" = "Select All";
+"you_might_also_like" = "You might also like!";
+"total_price" = "Total Price";
+"confirm_cart" = "Confirm Cart";
+"seller" = "Seller";
+"unknown" = "Unknown";
+"size" = "Size";
+"last" = "Last";
+"items" = "items";
+"favorite" = "Favorite";
+"remove" = "Remove";
+"quantity" = "Quantity";
+"default_avatar_letter" = "A";
+"store_qa" = "Store Q&A";
+
+"clear_basket" = "Clear Basket";
+"clear_basket_title" = "Clear Basket";
+"clear_basket_message" = "Are you sure you want to remove all items from your basket?";
+"delete_item_title" = "Remove Item";
+"delete_item_message" = "Are you sure you want to remove this item from your basket?";
+"cancel" = "Cancel";
+"clear" = "Clear";
+"delete" = "Delete";
+
+"featured" = "Featured";
+"in_stock" = "In Stock";
+"out_of_stock" = "Out of Stock";
+"variants" = "Variants";
+"available" = "Available";
+"brand" = "Brand";
+"category" = "Category";
+
+"cannot_add_to_cart" = "Cannot add to cart";
+"please_fill_required_fields" = "Please fill all required fields";
+"inquiry_submitted_success" = "Inquiry submitted successfully";
+
+"price_breakdown" = "Price Breakdown";
+"subtotal" = "Subtotal";
+"delivery_fee" = "Delivery Fee";
+"discount" = "Discount";
+"empty_basket" = "Your basket is empty";
+"delivery_inquiry_title" = "Delivery Inquiry";
+"inquiry_placeholder" = "Enter your delivery inquiry...";
+"agree_to" = "I agree to";
+"terms_and_conditions" = "Terms and Conditions";
+"i_agree" = "I agree";
+"submit_inquiry" = "Submit Inquiry";
+"error_occurred" = "An error occurred";
+"success" = "Success";
+"product_added_to_cart_success" = "Product added to cart successfully";
+"new_product" = "New Product";
+"reviews" = "Reviews";
+"stock" = "Stock";
+"delivery_inquiry" = "Delivery Inquiry";
+"color" = "Color";
+"description" = "Description";
+"sold_by" = "Sold by";
+"visit_store" = "Visit Store";
+"total" = "Total";
+"adding" = "Adding...";
+"add_to_cart" = "Add to Cart";
+"store_qa_description" = "Ask questions about this store";
+"ask_question" = "Ask Question";
+"view_all" = "View All";
+"product_qa" = "Product Q&A";
+"related_products" = "Related Products";
+"related_products_loading" = "Loading related products...";
+"loading" = "Loading...";
+"product_not_found" = "Product not found";
+
+"question_submitted_success" = "Question submitted successfully";
+"select_size" = "Select size";
+"select" = "Select";
+"last_items" = "Last items";
+"product_qa_title" = "Product Q&A";
+"question_placeholder" = "Enter your question here...";
+"send_question" = "Send question";
+"details" = "Details";
+

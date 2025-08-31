@@ -6,8 +6,10 @@
 //
 
 struct ResponseConfirmOtp: Codable {
-    let access_token: String
-    let refresh_token: String
+    let access_token: String?
+    let refresh_token: String?
+    let message: String
+    let userAlreadyExist: Bool
     let user: UserData?
 }
 

@@ -10,7 +10,10 @@ import SwiftUI
 import Resolver
 
 enum Page: Hashable {
-    case product
+    case product(_ id: String)
+    case profile
+    case reviewsAll(_ id: String)
+    case productQuestionsAll(_ id: String)
 }
 
 class Coordinator: ObservableObject {
@@ -29,8 +32,14 @@ class Coordinator: ObservableObject {
     @ViewBuilder
     func view(for page: Page) -> some View {
         switch page {
-        case .product:
-            EmptyView()
+        case .product(let id):
+            ProductDetailView(productId: id)
+        case .profile:
+            ProfileView()
+        case .reviewsAll(let id):
+            ReviewsScreen()
+        case .productQuestionsAll(let id):
+            ProductQAView(productId: id)
         }
     }
     

@@ -8,9 +8,9 @@
 import Combine
 
 class AuthRepositoryImpl: AuthRepository {
-    func updateProfile(request: RequestUpdateProfile) -> AnyPublisher<ResponseUpdateProfile, NetworkError> {
+    func completeRegistration(request: RequestUpdateProfile) -> AnyPublisher<ResponseUpdateProfile, NetworkError> {
         return Future { promise in
-            Network.perform(endpoint: Endpoints.updateProfile(request)) { (result: Result<ResponseUpdateProfile, NetworkError>) in
+            Network.perform(endpoint: Endpoints.completeRegistration(request)) { (result: Result<ResponseUpdateProfile, NetworkError>) in
                 switch result {
                 case .success(let response):
                     promise(.success(response))

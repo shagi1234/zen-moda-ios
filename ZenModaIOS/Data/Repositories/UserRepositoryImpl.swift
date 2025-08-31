@@ -11,7 +11,6 @@ import Combine
 class UserRepositoryImpl: UserRepository {
     func getUser(id: String) -> AnyPublisher<ResponseGetUser, NetworkError> {
         let additionalUrl = "/\(id)"
-        
         return Future { promise in
             Network.performWithCustomPath(endpoint: Endpoints.getUser,additionalPath: additionalUrl) { (result: Result<ResponseGetUser, NetworkError>) in
                 switch result {

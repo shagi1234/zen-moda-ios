@@ -12,12 +12,11 @@ struct TabItemView: View {
     var data: TabItemData
     @Binding var selectedInd: Int
     var onTabPressed: ((Int) -> Void)?
-    var badgeCount: Int = 0 // Add badge support
+    var badgeCount: Int = 0
     
     var body: some View {
         VStack(spacing: 4) {
             ZStack {
-                // Icon
                 Image(systemName: selectedInd == data.rawValue ? data.image : data.imageInactive)
                     .resizable()
                     .renderingMode(.template)
@@ -45,12 +44,6 @@ struct TabItemView: View {
                 }
             }
             .frame(width: 32, height: 32)
-            
-            // Title (optional - remove if you don't want labels)
-//            Text(data.title)
-//                .font(.system(size: 10, weight: .medium))
-//                .foregroundColor(selectedInd == data.rawValue ? .accent : .secondary)
-//                .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity)
         .contentShape(Rectangle())

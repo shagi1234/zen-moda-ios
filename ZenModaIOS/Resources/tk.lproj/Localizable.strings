@@ -46,3 +46,110 @@
 "about_us" = "Biz barada";
 "open_shop" = "Dükan açmak";
 "about_program" = "Programma barada";
+
+"key_search_zen_moda" = "Zen modadan gözle";
+"key_super_discounts" = "SUPER ARZANLADYŞLAR!";
+"key_spring_sale" = "BAHAR SATUWЫ";
+"key_discounts_up_to" = "Arzanladyş";
+"key_view_all" = "Hemmesini gör";
+"key_sale" = "SATUW";
+"key_discount" = "ARZANLADYŞ";
+"key_below_300_tmt" = "300 TMT aşakdaky harytlar";
+"key_clean_weekdays_ozon" = "Ozonda arassa günler!";
+"key_savings_household_chemistry" = "Öý himiýasyna tygşytlamalar";
+"key_brands" = "Markalar";
+"key_for_you" = "Siziň üçin";
+"key_see_all" = "Hemmesini gör";
+"key_sale_spring_2021" = "SATUW / BAHAR 2021";
+
+"not_logged_in" = "Ulgama girmedik";
+"profile_information" = "Profil maglumatlary";
+"ok" = "Bolýar";
+"unknown_error" = "Näbelli ýalňyşlyk";
+"password" = "Parol";
+"log_out" = "Çykmak";
+"delete_account" = "Hasaby pozmak";
+
+"cart_title" = "Sebet";
+"items_count" = "haryt";
+"select_all" = "Hemmesini saýlaň";
+"you_might_also_like" = "Şuny hem halarsyň!";
+"total_price" = "Jemi baha";
+"confirm_cart" = "Sebedi tassykla";
+"seller" = "Satyji";
+"unknown" = "Näbelli";
+"size" = "Razmer";
+"last" = "Şonky";
+"items" = "haryt";
+"favorite" = "Haladym";
+"remove" = "Aýyrmak";
+"quantity" = "Sany";
+"default_avatar_letter" = "A";
+"store_qa" = "Dukan bilen sorag jogap";
+
+"clear_basket" = "Sebedi arassala";
+"clear_basket_title" = "Sebedi arassala";
+"clear_basket_message" = "Sebetiňizdäki ähli harytlary aýyrmak isleýärsiňizmi?";
+"delete_item_title" = "Haryt aýyr";
+"delete_item_message" = "Bu haryt sebetiňizden aýyrmak isleýärsiňizmi?";
+"cancel" = "Ýatyr";
+"clear" = "Arassala";
+"delete" = "Aýyr";
+
+"featured" = "Maslahat berilýän";
+"in_stock" = "Ätiýaçlykda bar";
+"out_of_stock" = "Ätiýaçlykda ýok";
+"variants" = "Görnüşler";
+"available" = "Elýeterli";
+"brand" = "Marka";
+"category" = "Kategoriýa";
+
+"cannot_add_to_cart" = "Sebede goşup bolmaýar";
+"please_fill_required_fields" = "Gerekli ýerleri dolduryň";
+"inquiry_submitted_success" = "Sorag üstünlikli iberildi";
+
+"price_breakdown" = "Bahanyň düzümi";
+"subtotal" = "Ara jemi";
+"delivery_fee" = "Eltip bermegiň bahasy";
+"discount" = "Arzanladyş";
+"empty_basket" = "Siziň sebetiňiz boş";
+"delivery_inquiry_title" = "Eltip bermek barada sorag";
+"inquiry_placeholder" = "Eltip bermek barada soragyňyzy giriziň...";
+"agree_to" = "Men razy";
+"terms_and_conditions" = "Şertler we şaýlamalary";
+"i_agree" = "Men razy";
+"submit_inquiry" = "Sorag ibermek";
+"error_occurred" = "Ýalňyşlyk ýüze çykdy";
+"success" = "Üstünlikli";
+"product_added_to_cart_success" = "Haryt üstünlikli sebede goşuldy";
+"new_product" = "Täze haryt";
+"reviews" = "Teswirler";
+"stock" = "Ätiýaçlyk";
+"delivery_inquiry" = "Eltip bermek barada sorag";
+"color" = "Reňk";
+"description" = "Düşündiriş";
+"sold_by" = "Satyşy";
+"visit_store" = "Dükana girmek";
+"total" = "Jemi";
+"adding" = "Goşulýar...";
+"add_to_cart" = "Sebede goş";
+"store_qa_description" = "Bu dükan barada sorag bermek";
+"ask_question" = "Sorag bermek";
+"view_all" = "Hemmesine seretmek";
+"product_qa" = "Haryt soraglary we jogaplary";
+"related_products" = "Meňzeş harytlar";
+"related_products_loading" = "Meňzeş harytlar ýüklenýär...";
+"loading" = "Ýüklenýär...";
+"product_not_found" = "Haryt tapylmady";
+
+"question_submitted_success" = "Sorag üstünlikli iberildi";
+"select_size" = "Ölçegi saýlaň";
+"select" = "Saýla";
+"last_items" = "Soňky harytlar";
+"product_qa_title" = "Haryt barada sorag-jogap";
+"question_placeholder" = "Soragyňyzy şu ýere ýazyň...";
+"send_question" = "Sorag iber";
+"details" = "Giňişleýin maglumat";
+
+
+

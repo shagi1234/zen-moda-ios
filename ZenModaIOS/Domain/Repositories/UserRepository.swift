@@ -9,4 +9,5 @@ import Combine
 
 protocol UserRepository {
     func getUser(id: String) -> AnyPublisher<ResponseGetUser, NetworkError>
+//    func delete(id: String) -> AnyPublisher<ResponseGetUser, NetworkError>
 }

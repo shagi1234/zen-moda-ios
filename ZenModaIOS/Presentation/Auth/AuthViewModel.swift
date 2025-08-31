@@ -113,6 +113,7 @@ class AuthViewModel: ObservableObject {
                 },
                 receiveValue: { [weak self] response in
                     self?.currentStep = .verification
+                    Defaults.phoneNumber = self?.phoneNumber ?? ""
                     self?.startOTPTimer()
                 }
             )
@@ -142,16 +143,17 @@ class AuthViewModel: ObservableObject {
                 },
                 receiveValue: { [weak self] response in
                     
-                    if response.user == nil {
+                    if !response.userAlreadyExist {
                         self?.currentStep = .nameEntry
                     } else {
                         self?.currentStep = .completed
                         Defaults.username = response.user?.fullname ?? ""
                         Defaults.gender = response.user?.gender ?? ""
                         Defaults.userId = response.user?.id ?? ""
+                        Defaults.token = response.access_token ?? ""
                     }
                     
-//                    Defaults.token = response.access_token
+                    
                 }
             )
             .store(in: &cancellables)
@@ -165,10 +167,11 @@ class AuthViewModel: ObservableObject {
         
         let request = RequestUpdateProfile(
             fullname: fullName,
+            phone_number: Defaults.phoneNumber,
             gender: selectedGender == 0 ? "MALE" : "FEMALE"
         )
         
-        authRepository.updateProfile(request: request)
+        authRepository.completeRegistration(request: request)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { [weak self] completion in
@@ -184,6 +187,7 @@ class AuthViewModel: ObservableObject {
                     Defaults.username = response.user.fullname ?? ""
                     Defaults.userId = response.user.id
                     Defaults.gender = response.user.gender ?? ""
+                    Defaults.token = response.access_token
                     
                     self?.currentStep = .completed
                 }
